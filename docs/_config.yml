@@ -1,2 +1,3 @@
 #theme: jekyll-theme-cayman
-remote_theme: volny/creative-theme-jekyll
+#remote_theme: volny/creative-theme-jekyll
+remote_theme: StartBootstrap/startbootstrap-clean-blog-jekyll
