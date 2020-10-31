@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: off
+    log-startup-info: true
+
+mqtt:
+  hostname: 172.0.0.1
+#  port: 1883
+  auth:
+    username: username
+    password: password
