@@ -19,6 +19,41 @@ plugins {
 }
 ```
 
+## Production Features
+
+### Customizing Properties
+you can customize application properties at run. 
+
+The priority is as follows:
+- JVM Options: `-Dspring.main.banner-mode=off`
+- Environment Variables : `SPRING_MAIN_BANNERMODE=OFF`
+- Program Arguments : `--spring.main.banner-mode=off`
+
+read more details as [Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config).
+
+### Graceful Shutdown
+Spring Boot 2.3+ support [graceful shutdown](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/html/spring-boot-features.html#boot-features-graceful-shutdown) for embedded web servers.
+
+When enabled using server.shutdown=graceful, upon shutdown, the web server will no longer permit new requests and will wait for a grace period for active requests to complete.
+```properties 
+server.shutdown=graceful
+spring.lifecycle.timeout-per-shutdown-phase=30s
+```
+
+### Spring Boot Actuator
+Spring Boot 2.0+ rely on [micrometer.io](https://micrometer.io/). so, you can monitor metrics using `Prometheus`.
+
+`spring-boot-starter-actuator` must be added to use the Spring Boot Actuator.
+```groovy
+implementation 'org.springframework.boot:spring-boot-starter-actuator'
+```
+
+### Application Availability
+Spring Boot includes out-of-the box support for the commonly used `liveness` and `readiness` availability states.
+
+Spring Boot provides Kubernetes HTTP probes for "Liveness" and "Readiness" with [Actuator Health Endpoints](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/html/production-ready-features.html#production-ready-kubernetes-probes).
+
+
 ## Release Notes
 - [Spring Boot 2.0 Release Notes](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes)
 - [Spring Boot 2.1 Release Notes](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.1-Release-Notes)

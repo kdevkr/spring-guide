@@ -1,7 +1,10 @@
 server:
   port: 8080
+  shutdown: graceful
 
 spring:
   main:
     banner-mode: off
-    lazy-initialization: true
+    lazy-initialization: false
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
